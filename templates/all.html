@@ -1,0 +1,45 @@
+<!-- Bloque que muestra los mensajes flash -->
+{% block flash %}{% endblock %}
+<!-- Bloque que se reemplaza por el contenido de cada página -->
+<!-- Plantilla all.html que extiende de base.html y muestra todos los códigos -->
+{% extends "base.html" %}
+{% block content %}
+<ul>
+    <table id="data" class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <h2>Estos son todos los códigos generados</h2>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for code in codes %}
+            <tr>
+                <td scope="row">{{ code[0] }}</td>
+
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+</ul>
+
+{% block scripts %}
+<script>
+    $(function () {
+
+        $('#data').DataTable('#myTable', {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json',
+            },
+        });
+    });
+
+</script>
+{% endblock %}
+{% endblock %}
